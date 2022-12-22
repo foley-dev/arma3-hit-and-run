@@ -1,0 +1,117 @@
+onLoadName = "18 [Tour] Hit and Run";
+briefingName = "18 [Tour] Hit and Run (v1.4)";
+
+// RC start
+respawn = 3;
+respawnDelay = 30;
+respawnDialog = 1;
+respawnTemplates[] = {"Tickets"};
+respawnVehicleDelay = 30;
+
+#include "scripts\TOUR_RC\dialog\hpp\admintool.hpp"
+// RC end
+
+class Params
+{
+	class Foley_param_timeOfDay
+	{
+		title = "Time:";
+		values[] = {1, 2, 3, 4, 5, 6};
+		default = 4;
+		texts[] = {"3:55 - Dawn", "4:30 - Sunrise", "13:00 - Early Afternoon", "17:45 - Late Afternoon (Default)", "18:45 - Sunset", "19:45 - Dusk"};
+	};
+	
+	class Foley_param_viewDistance
+	{
+		title = "View distance:";
+		values[] = {1400, 1600, 1800, 2000, 2200, 2400, 2600};
+		default = 1800;
+		texts[] = {"1400m", "1600m", "1800m (Default)", "2000m", "2200m", "2400m", "2600m"};
+	};
+
+	class TOUR_param_respawn
+	{
+		title = "Respawn Time (s):";
+		values[] = {0, 30, 60, 300, 600, 900};
+		default = 30;
+		texts[] = {"None", "30 Seconds", "1 Minute", "5 Minutes", "10 Minutes", "15 Minutes"};
+	};
+	
+	class TOUR_param_tickets
+	{
+		title = "Lives:";
+		values[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 100};
+		default = 1;
+		texts[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "20", "30", "40", "50", "100"};
+	};
+
+	class Foley_param_debugMode
+	{
+		title = "Debug group markers:";
+		values[] = {0, 1};
+		default = 0;
+		texts[] = {"Off (Default)", "On - for testing only"};
+	};	
+};
+
+class CfgDebriefing
+{
+	class VictoryEnding
+	{
+		title = "Victory";
+		subtitle = "Excellent job!";
+		description = "Operation was successful, the enemy suffered significant damage.";
+		pictureBackground = "assets\picture.paa";
+		picture = "flag_FIA";
+	};
+	
+	class MinorVictoryEnding
+	{
+		title = "Minor Victory";
+		subtitle = "Grisly end";
+		description = "Although enemy suffered significant damage, so did you.";
+		pictureBackground = "assets\picture.paa";
+		picture = "flag_FIA";
+	};
+	
+	class MinorDefeatEnding
+	{
+		title = "Minor Defeat";
+		subtitle = "Early escape";
+		description = "You missed your opportunity to ambush the enemy and escaped early.";
+		pictureBackground = "assets\picture.paa";
+		picture = "White";
+	};
+	
+	class DefeatEnding
+	{
+		title = "Defeat";
+		subtitle = "Combat ineffective";
+		description = "You were rendered combat ineffective and couldn't deal enough damage to the enemy.";
+		pictureBackground = "assets\picture.paa";
+		picture = "KIA";
+	};
+	
+	class loser
+	{
+		title = "Crushing Defeat";
+		subtitle = "That was to be avoided";
+		description = "Your whole cell was wiped out.";
+		pictureBackground = "assets\picture.paa";
+		picture = "KIA";
+	};
+};
+
+enableDebugConsole[] = {"76561198085327847"};
+
+class CfgRemoteExec
+{
+	class Functions
+	{
+		mode = 2;
+	};
+	class Commands
+	{
+		mode = 2;
+	};
+};
